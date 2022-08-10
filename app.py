@@ -34,6 +34,13 @@ gss_clean = gss_clean.rename({'wtss':'weight',
 gss_clean.age = gss_clean.age.replace({'89 or older':'89'})
 gss_clean.age = gss_clean.age.astype('float')
 
+#Problem 1
+markdown_text = '''
+In 1973, women were making 57 cents per dollar earned by men. In 2020, according to the Bureau of Labor Statistics, the annual earnings of women were 82.3% of men's. Although this is a marked improvement over the course of nearly five decades, it is also an indicator of the pay gap that persists between the two biological genders. This discrepancy extends across a majority of industries as well as within the same race and ethnic counterparts at every level of completed education. Surprisingly, a majority of women who have attained advanced degrees earn less than white men who, on average, have only completed a bachelor's degree. As a result of the pandemic, progress towards achieving pay equality has been halted. The layoffs and consequent lack of child care has significantly affected women of color at the lower bracket of income. Work can be done to bridge the gap by expanding the access to paid leave and child/elderly care and increasing transparency around compensation across the board, among other things. [Gender Pay Gap](https://blog.dol.gov/2021/03/19/5-facts-about-the-state-of-the-gender-pay-gap)
+
+The [General Social Survey](https://gss.norc.org) (GSS) is an ongoing interview survey conducted by the National Opinion Research Center (NORC) since 1972. It is a collection of data on U.S households that provides insight into contemporary American society to measure social change and trends in attitudes and attributes of the adult population. It primarily serves as a readily available source of high-quality, up-do-date, and scientifically relevant data for social science researchers. The survey collects information on a large spectrum of demographic characteristics. Some of the topics covered in the GSS data includes psychological well-being, stress and traumatic events, national spending priorities, morality, intergroup tolerance, crime and violence, social mobility, and civil liberties. This survey is conducted as an in-person interview of a nationally representative sample of non-institutionalized adults who are able to speak either Spanish or English. If an in-person interviewee is unable to be present, the interview will be conducted over the telephone. [General Social Survey](https://www.nsf.gov/pubs/2007/nsf0748/nsf0748_3.pdf)
+'''
+
 #Problem 2
 gss_clean_display = gss_clean.groupby('sex').agg({'income':'mean', 'job_prestige':'mean','socioeconomic_index':'mean','education':'mean'}).reset_index()
 gss_clean_display = round(gss_clean_display, 2)
@@ -81,7 +88,7 @@ app.layout = html.Div(
     [
         html.H1("Exploring Gender Differences through GSS Data"),
         
-        #dcc.Markdown(children = markdown_text),
+        dcc.Markdown(children = markdown_text),
         
         html.H3("Comparing Male vs. Female for Average Income, Education, Occupational Prestige, and Socioeconomic Index"),
         
