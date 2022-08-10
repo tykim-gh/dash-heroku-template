@@ -72,6 +72,7 @@ figFacet.update_layout(showlegend=False)
 
 #Problem 3 and Dashboard
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+server = app.server
 
 xChoices = ['satjob','relationship','male_breadwinner','men_bettersuited','child_suffer','men_overwork']
 groupChoices = ['sex','region','education']
